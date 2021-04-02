@@ -73,7 +73,7 @@ const isCapitalized = (str) => {
   // Solution code here...
   let regex1 = /\b[A-Z](\w)*/g;
   let str1 = str.match(regex1);
-  if (str1) {
+  if (str1===) {
     return str1;
   }
   else {
