@@ -82,6 +82,7 @@ describe('Testing challenge 4', () => {
     expect(standardizePhoneNumbers(nums)).toStrictEqual(['1234567890', '2222222222']);
     expect(standardizePhoneNumbers([nums[0]])).toStrictEqual(['1234567890']);
   });
+   
 });
 ------------------------------------------------------------------------------------------------ */
 
@@ -98,6 +99,8 @@ CHALLENGE 5
 Write a function named onlyOddChars that takes in a string and returns only the odd-index characters from that string.
 
 For example, 'abcdefg' returns 'bdf'
+ expect(onlyOddChars('0123456789')).toStrictEqual('13579');
+    expect(onlyOddChars('abcd')).toStrictEqual('bd');
 ------------------------------------------------------------------------------------------------ */
 
 const onlyOddChars = (str) => {
