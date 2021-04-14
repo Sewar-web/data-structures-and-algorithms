@@ -127,8 +127,7 @@ describe('Testing challenge 5', () => {
 
 const salesData = (hours, data) => {
   // Solution code here...
-  let arr=data;
-  arr.forEach((val ,idx) =>
+  let arr=data.map((val ,idx) =>
   {
     return { sales: `${val} cookies`, time: `${hours[idx]}` };
   });
