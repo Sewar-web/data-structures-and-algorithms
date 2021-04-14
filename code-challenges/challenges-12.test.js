@@ -101,10 +101,38 @@ Pat has decided that he would also like to organize his data as objects containi
 Here is sample data for the 9:00 sales: { sales: '88 cookies', time: '9 a.m.' }.
 
 Write a function named salesData that uses forEach to iterate over the hourlySales array and create an object for each hour. Return an array of the formatted data.
+
+describe('Testing challenge 5', () => {
+  test('It should create an object of data for each store', () => {
+    expect(salesData(hoursOpen, grandTotal(cookieStores))).toStrictEqual([
+      { sales: '88 cookies', time: '9 a.m.' },
+      { sales: '153 cookies', time: '10 a.m.' },
+      { sales: '252 cookies', time: '11 a.m.' },
+      { sales: '286 cookies', time: '12 p.m.' },
+      { sales: '139 cookies', time: '1 p.m.' },
+      { sales: '161 cookies', time: '2 p.m.' },
+      { sales: '145 cookies', time: '3 p.m.' },
+      { sales: '232 cookies', time: '4 p.m.' },
+      { sales: '276 cookies', time: '5 p.m.' },
+      { sales: '207 cookies', time: '6 p.m.' },
+      { sales: '161 cookies', time: '7 p.m.' },
+      { sales: '169 cookies', time: '8 p.m.' }
+    ]);
+
+    expect(salesData(hoursOpen, grandTotal(cookieStores)).length).toStrictEqual(hoursOpen.length);
+  });
+});
+
 ------------------------------------------------------------------------------------------------ */
 
 const salesData = (hours, data) => {
   // Solution code here...
+  let arr=data;
+  arr.forEach((val ,idx) =>
+  {
+    return { sales: `${val} cookies`, time: `${hours[idx]}` };
+  });
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -129,9 +157,14 @@ const errands = [
 ];
 
 const howManyTreats = (arr) => {
-  // Solution code here...
+  let tre = 0;
+  arr.map((item) => {
+    item.items.map((properraty) => {
+      properraty.name === 'Treats' ? (tre = properraty.quantity) : tre;
+    });
+  });
+  return tre;
 };
-
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
 
