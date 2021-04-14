@@ -172,8 +172,8 @@ const errands = [
 
 const howManyTreats = (arr) => {
   let tre = 0;
-  arr.map((item) => {
-    item.items.map((properraty) => {
+  arr.map((ele) => {
+    ele.items.map((properraty) => {
       if( properraty.name === 'Treats')
       {
         return tre = properraty.quantity;
