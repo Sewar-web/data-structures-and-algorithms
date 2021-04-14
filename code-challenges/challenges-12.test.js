@@ -55,6 +55,12 @@ For example:
 ]
 
 return: 35
+describe('Testing challenge 3', () => {
+  test('It should return the total sum', () => {
+    expect(totalSum([[13,24,24,2], [2,5,6], [2,3]])).toStrictEqual(81);
+    expect(totalSum([])).toStrictEqual(0);
+  });
+});
 ------------------------------------------------------------------------------------------------ */
 const totalSum = (matrix) => {
   return matrix.reduce((acc,val)=>{
@@ -89,19 +95,26 @@ const alkiBeach = [33, 31, 147, 130, 27, 93, 38, 126, 141, 63, 46, 17];
 const cookieStores = [firstPike, seaTac, seattleCenter, capHill, alkiBeach];
 
 const grandTotal = (stores) => {
-  // Solution code here...
-
+  let total = [];
+  for (let i = 0; i < hoursOpen.length; i++) {
+    let hour = 0;
+    for (let y = 0; y < stores.length; y++) {
+      hour = hour + stores[y][i];
+    }
+    total.push(hour);
+  }
+  return total;
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
 
 Pat has decided that he would also like to organize his data as objects containing the number of cookies sold per hour and the time.
-
+  expect(salesData(hoursOpen, grandTotal(cookieStores)).length).toStrictEqual(hoursOpen.length);  expect(salesData(hoursOpen, grandTotal(cookieStores)).length).toStrictEqual(hoursOpen.length);
 Here is sample data for the 9:00 sales: { sales: '88 cookies', time: '9 a.m.' }.
 
 Write a function named salesData that uses forEach to iterate over the hourlySales array and create an object for each hour. Return an array of the formatted data.
-
 describe('Testing challenge 5', () => {
   test('It should create an object of data for each store', () => {
     expect(salesData(hoursOpen, grandTotal(cookieStores))).toStrictEqual([
@@ -121,14 +134,10 @@ describe('Testing challenge 5', () => {
 
     expect(salesData(hoursOpen, grandTotal(cookieStores)).length).toStrictEqual(hoursOpen.length);
   });
-});
-
 ------------------------------------------------------------------------------------------------ */
 
 const salesData = (hours, data) => {
-  // Solution code here...
-  let arr=data;
-  arr.forEach((val ,idx) =>
+  let arr=data.map((val ,idx) =>
   {
     return { sales: `${val} cookies`, time: `${hours[idx]}` };
   });
@@ -139,7 +148,12 @@ const salesData = (hours, data) => {
 CHALLENGE 6
 
 Write a function named howManyTreats that will return the quantity of treats you need to pick up from the pet store today from this array.
------------------------------------------------------------------------------------------------- */
+describe('Testing challenge 6', () => {
+  test('It should return the number 24', () => {
+    expect(howManyTreats(errands)).toStrictEqual(24);
+  });
+})-
+----------------------------------------------------------------------------------------------- */
 
 const errands = [
   {
@@ -158,13 +172,21 @@ const errands = [
 
 const howManyTreats = (arr) => {
   let tre = 0;
-  arr.map((item) => {
-    item.items.map((properraty) => {
-      properraty.name === 'Treats' ? (tre = properraty.quantity) : tre;
+  arr.map((ele) => {
+    ele.items.map((properraty) => {
+      if( properraty.name === 'Treats')
+      {
+        return tre = properraty.quantity;
+      }
+      else
+      {
+        return tre;
+      }
     });
   });
   return tre;
 };
+
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
 
